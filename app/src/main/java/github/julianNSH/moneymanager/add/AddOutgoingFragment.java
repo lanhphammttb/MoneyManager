@@ -154,7 +154,7 @@ public class AddOutgoingFragment extends Fragment {
             if(!(outgoingSource.getText().toString().isEmpty() || amount.getText().toString().isEmpty() ||
             outgoingTime.getText().toString().isEmpty() || outgoingDate.getText().toString().isEmpty())) {
                 databaseClass.addOutgoing(inputOutgoing);
-                Toast.makeText(getContext(), inputOutgoing.getTvType() + " a fost adăugat", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), inputOutgoing.getTvType() + " thêm thành công", Toast.LENGTH_SHORT).show();
             }
         });
         return root;

@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="15dp"
-                android:text="Categoria"/>
+                android:text="@string/group"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Ora și Data"/>
+                android:text="@string/date"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="Suma"/>
+                android:text="@string/money"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:layout_marginRight="5dp"
-                android:text="Comentariul"/>
+                android:text="@string/cmt"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -150,7 +150,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:backgroundTint="@color/blue1"
-            android:text="Editare" />
+            android:text="@string/edit" />
 
         <Button
             android:id="@+id/btn_delete"
@@ -161,7 +161,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:backgroundTint="@color/red2"
-            android:text="Stergere" />
+            android:text="@string/del" />
 
     </LinearLayout>
 

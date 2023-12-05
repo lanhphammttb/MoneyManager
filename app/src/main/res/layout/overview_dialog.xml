@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Domeniul"
+                android:text="Danh mục"
                 android:textSize="15dp"/>
 
             <Space
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Categoria"/>
+                android:text="Nhóm"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Ora și Data"/>
+                android:text="Ngày và giờ"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="Suma"/>
+                android:text="Số tiền"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:textColor="@color/black"
-                android:text="Comentariul"/>
+                android:text="Ghi chú"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -179,7 +179,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:backgroundTint="@color/blue1"
-            android:text="Editare" />
+            android:text="Sửa" />
 
         <Button
             android:id="@+id/btn_delete"
@@ -190,7 +190,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:backgroundTint="@color/red2"
-            android:text="Stergere" />
+            android:text="Xóa" />
 
     </LinearLayout>
 

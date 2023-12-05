@@ -30,7 +30,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:textColor="@color/black"
-                        android:text="Sursa"
+                        android:text="Nguồn"
                         android:layout_margin="5dp"/>
 
                     <AutoCompleteTextView
@@ -48,7 +48,7 @@
                         android:textSize="15sp"
                         android:textColor="@color/black"
                         android:inputType="text"
-                        android:hint="Selectați sursa sau creați alta"/>
+                        android:hint="Chọn nguồn hoặc tạo nguồn khác"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -76,7 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
-                        android:text="Suma"
+                        android:text="Số tiền"
                         android:textSize="15sp"
                         android:textColor="@color/black"/>
 
@@ -93,7 +93,7 @@
                         android:textSize="15sp"
                         android:textColor="@color/black"
                         android:inputType="numberDecimal"
-                        android:hint="Valoare numerarului"
+                        android:hint="Nhập số tiền"
                         />
                 </LinearLayout>
             </LinearLayout>
@@ -121,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:textColor="@color/black"
-                        android:text="Ora și Data "
+                        android:text="Ngày và giờ "
                         android:layout_margin="5dp"/>
 
                     <LinearLayout
@@ -156,7 +156,7 @@
                             android:textColor="@color/black"
                             android:ems="10"
                             android:inputType="date"
-                            android:hint="aaaa-LL-zz"
+                            android:hint="yyyy-MM-dd"
                             android:gravity="center"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -185,7 +185,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:textColor="@color/black"
-                        android:text="Comentariul"
+                        android:text="Mô tả"
                         android:layout_margin="5dp"/>
 
                     <EditText
@@ -229,7 +229,7 @@
                     android:layout_height="50sp"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/green2"
-                    android:text="ADĂUGARE"
+                    android:text="Thêm"
                     android:textSize="15sp"
                     android:foregroundGravity="center_vertical|center_horizontal"
                     app:cornerRadius="10sp" />

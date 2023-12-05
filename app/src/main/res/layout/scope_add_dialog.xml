@@ -32,7 +32,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:textColor="@color/black"
-                        android:text="Crearea scopului"
+                        android:text="@string/create_scop"
                         android:layout_margin="5dp"/>
 
                     <EditText
@@ -48,7 +48,7 @@
                         android:textSize="15sp"
                         android:textColor="@color/black"
                         android:inputType="text"
-                        android:hint=" Titlul Scopului"/>
+                        android:hint="@string/text_scop"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -84,7 +84,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:text="Suma Curentă"
+                            android:text="@string/money_cur"
                             android:textSize="15sp"
                             android:textColor="@color/black"/>
 
@@ -101,7 +101,7 @@
                             android:textSize="13sp"
                             android:textColor="@color/black"
                             android:inputType="numberDecimal"
-                            android:hint="Valoarea "/>
+                            android:hint="@string/text_money"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -120,7 +120,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:text="Suma Necesară"
+                            android:text="@string/money_nes"
                             android:textSize="15sp"
                             android:textColor="@color/black"/>
 
@@ -137,7 +137,7 @@
                             android:textSize="13sp"
                             android:textColor="@color/black"
                             android:inputType="numberDecimal"
-                            android:hint="Valoarea"/>
+                            android:hint="@string/text_money"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -173,7 +173,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="15sp"
                             android:textColor="@color/black"
-                            android:text="De La:"
+                            android:text="@string/from"
                             android:layout_margin="5dp"/>
 
                         <LinearLayout
@@ -207,7 +207,7 @@
                                 android:textSize="12sp"
                                 android:textColor="@color/black"
                                 android:inputType="date"
-                                android:hint="aaaa-LL-zz"
+                                android:hint="dd/MM/yyy"
                                 android:gravity="center"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -223,7 +223,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="15sp"
                             android:textColor="@color/black"
-                            android:text="Până La:"
+                            android:text="@string/to"
                             android:layout_margin="5dp"/>
 
                         <LinearLayout
@@ -258,7 +258,7 @@
                                 android:textSize="12sp"
                                 android:textColor="@color/black"
                                 android:inputType="date"
-                                android:hint="aaaa-LL-zz"
+                                android:hint="dd/MM/yyyy"
                                 android:gravity="center"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -290,7 +290,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
                         android:textColor="@color/black"
-                        android:text="Comentariul"
+                        android:text="@string/cmt"
                         android:layout_margin="5dp"/>
 
                     <EditText
@@ -329,7 +329,7 @@
                     android:layout_height="50sp"
                     android:layout_margin="5dp"
                     android:backgroundTint="@color/green2"
-                    android:text="ADĂUGARE"
+                    android:text="@string/add"
                     android:textSize="15sp"
                     android:foregroundGravity="center_vertical|center_horizontal"
                     app:cornerRadius="20sp" />

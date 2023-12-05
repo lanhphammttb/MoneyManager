@@ -135,7 +135,7 @@ public class ScopeHandler {
             scopeData.setComment(String.valueOf(comment.getText()));
             scopeData.setIsCompleted(0);
             databaseClass.updateScope(scopeData);
-            Toast.makeText(root.getContext(), scopeData.tvTitle+" a fost modificat", Toast.LENGTH_SHORT).show();
+            Toast.makeText(root.getContext(), scopeData.tvTitle+" đã được thay đổi", Toast.LENGTH_SHORT).show();
             updateDialog.dismiss();
         });
 

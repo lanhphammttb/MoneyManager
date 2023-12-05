@@ -107,7 +107,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder,final int position) {
         OverviewModelClass element = list.get(position);
         holder.tvType.setText(element.getTvType());
-        holder.tvPrice.setText(element.getTvAmount() + " MDL");
+        holder.tvPrice.setText(element.getTvAmount() + " VNĐ");
         holder.ivFigure.setImageResource(element.getIvFigure());
         holder.tvDateTime.setText(CustomDateParser.customDateParser(element.getDate(), "dd MMMM")+" "+element.getTime());
     }
@@ -128,7 +128,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.MyView
                 databaseClass.deleteFromOverview(list.get(viewHolder.getAdapterPosition()).getId(),
                         list.get(viewHolder.getAdapterPosition()).getTvDomain());
                 Toast.makeText(context, list.get(viewHolder.getAdapterPosition()).getTvType() +
-                        " a fost șters", Toast.LENGTH_SHORT).show();
+                        " đã bị xóa", Toast.LENGTH_SHORT).show();
                 itemOverviewDialog.dismiss();
         });
     }
@@ -150,3 +150,4 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.MyView
         });
     }
 }
+

@@ -131,7 +131,7 @@ public class UpdateFromOverviewHandler {
                 element.setDate(String.valueOf(date.getText()));
                 element.setRepeat(0);
                 long id = databaseClass.updateFromOverview(element);
-                Toast.makeText(root.getContext(), source.getText()+" salvat", Toast.LENGTH_SHORT).show();
+                Toast.makeText(root.getContext(), source.getText()+" lưu thành công", Toast.LENGTH_SHORT).show();
                 updateDialog.dismiss();
             }
 

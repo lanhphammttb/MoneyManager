@@ -31,7 +31,7 @@
             android:textColor="@color/black"
             android:layout_gravity="center_vertical"
             android:lineSpacingExtra="3sp"
-            android:text="Lista Tranzacțiilor"/>
+            android:text="@string/list_trans"/>
 
         <Space
             android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                 android:lineSpacingExtra="3sp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Sortare:"/>
+                android:text="@string/sort"/>
 
             <LinearLayout
                 android:layout_width="120dp"
@@ -64,7 +64,6 @@
                     android:ems="15"
                     android:textSize="12sp"
                     android:textColor="@color/black"
-
                     />
             </LinearLayout>
         </LinearLayout>

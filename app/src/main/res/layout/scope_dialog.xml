@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="15dp"
-                android:text="Scopul"/>
+                android:text="@string/scop"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="De La"/>
+                android:text="@string/from"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Până la"/>
+                android:text="@string/to"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -117,7 +117,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:text="Suma Necesară"/>
+                android:text="@string/money_nes"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:text="Suma Adunată"/>
+                android:text="@string/money_get"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -179,7 +179,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:layout_marginRight="5dp"
-                android:text="Comentariul"/>
+                android:text="@string/cmt"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -267,7 +267,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/blue1"
-                android:text="Editare"
+                android:text="@string/edit"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeMaxTextSize="14sp"/>
@@ -281,7 +281,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="@color/red2"
-                android:text="Sterge"
+                android:text="@string/del"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="8sp"
                 android:autoSizeMaxTextSize="14sp" />

@@ -16,7 +16,7 @@
         android:id="@+id/navigation_statistics"
         android:name="github.julianNSH.moneymanager.statistics.StatisticsFragment"
         android:label="@string/title_statistics"
-        tools:layout="@layout/fragment_statistics"/>
+        tools:layout="@layout/fragment_list_trans"/>
     <fragment
         android:id="@+id/navigation_add"
         android:name="github.julianNSH.moneymanager.add.AddFragment"

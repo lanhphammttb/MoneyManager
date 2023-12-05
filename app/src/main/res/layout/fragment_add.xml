@@ -24,19 +24,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="Venit" />
+            android:text="Thu nhập" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="Cheltuieli" />
+            android:text="Chi tiêu" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:text="Scopuri"
+            android:text="Mục tiêu"
             android:focusable="true" />
     </com.google.android.material.tabs.TabLayout>
 

@@ -118,7 +118,7 @@ public class AddIncomeFragment extends Fragment {
         if(!(incomeSource.getText().toString().isEmpty() || incomeSource.getText().toString().isEmpty() ||
         incomeSource.getText().toString().isEmpty() || incomeSource.getText().toString().isEmpty())) {
             databaseClass.addIncome(inputOutgoing);
-            Toast.makeText(getContext(), incomeSource.getText().toString() + " a fost adăugat", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), incomeSource.getText().toString() + " thêm thành công", Toast.LENGTH_SHORT).show();
         }
 
     });

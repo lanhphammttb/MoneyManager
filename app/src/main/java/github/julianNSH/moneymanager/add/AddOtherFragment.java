@@ -126,7 +126,7 @@ public class AddOtherFragment extends Fragment {
             if(!(otherSource1.getText().toString().isEmpty() || amount.getText().toString().isEmpty()||
                     otherTransactionTime.getText().toString().isEmpty()||otherTransactionDate.getText().toString().isEmpty())) {
                 databaseClass.addScopeValue(inputSourceVal);
-                Toast.makeText(getContext(), selection[0] + " a fost adăugat", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), selection[0] + " thêm thành công", Toast.LENGTH_SHORT).show();
             }
         });
         return root;

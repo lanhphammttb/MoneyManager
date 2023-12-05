@@ -184,7 +184,7 @@ public class ScopeFragment extends Fragment {
                     startScopeTime.getText().toString().isEmpty() || startScopeDate.getText().toString().isEmpty()||
                     endScopeTime.getText().toString().isEmpty() || endScopeDate.getText().toString().isEmpty())) {
                 databaseClass.addScope(scopeData);
-                Toast.makeText(root.getContext(), scopeData.getTvTitle() + " a fost adăugat", Toast.LENGTH_SHORT).show();
+                Toast.makeText(root.getContext(), scopeData.getTvTitle() + " thêm thành công", Toast.LENGTH_SHORT).show();
             }
         });
         addScopeDialog.show();

@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="3sp"
-            android:text="Salariul"
+            android:text="Tiền lương"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:lineSpacingExtra="4sp"
-        android:text="MDL 22600"
+        android:text="22,600 VNĐ"
         android:textColor="@color/black"
         android:textSize="18sp" />
 

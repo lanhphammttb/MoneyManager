@@ -163,7 +163,7 @@ public class OutgoingHandler {
             inputOutgoing.setDate(String.valueOf(outgoingDate.getText()));
             inputOutgoing.setRepeat(0);
             databaseClass.updateOutgoing(inputOutgoing);
-            Toast.makeText(root.getContext(), inputOutgoing.getTvType()+" modificat cu succes", Toast.LENGTH_SHORT).show();
+            Toast.makeText(root.getContext(), inputOutgoing.getTvType()+" sửa thành công", Toast.LENGTH_SHORT).show();
             updateDialog.dismiss();
         });
 

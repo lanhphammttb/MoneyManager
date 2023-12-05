@@ -44,7 +44,7 @@
                         android:textColor="@color/black"
                         android:lineSpacingExtra="4sp"
                         android:gravity="center"
-                        android:text="Nu aveți scopuri create\n Tastați '+' pentru adăugare"
+                        android:text="Bạn chưa tạo mục tiêu nào\n Nhập '+' để thêm"
                         />
                 </LinearLayout>
             </LinearLayout>

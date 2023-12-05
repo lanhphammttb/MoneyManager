@@ -63,25 +63,27 @@ public class StatisticsAdapter extends RecyclerView.Adapter<StatisticsAdapter.My
          *  CREATES DIALOG WINDOW ON CLICK ON A ELEMENT OF LIST
          */
         viewHolder.rvItem.setOnClickListener(v -> {
-            TextView tv_category = itemStatisticsDialog.findViewById(R.id.tv_category);
-            TextView tv_date_time = itemStatisticsDialog.findViewById(R.id.tv_date_time);
-            TextView tv_amount = itemStatisticsDialog.findViewById(R.id.tv_amount);
-            TextView tv_comment = itemStatisticsDialog.findViewById(R.id.tv_comment);
+            int position = viewHolder.getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                StatisticsModelClass item = list.get(position);
 
-            tv_category.setText(list.get(viewHolder.getAdapterPosition()).getTvType());
-            tv_date_time.setText(list.get(viewHolder.getAdapterPosition()).getTime()+" "+
-                    list.get(viewHolder.getAdapterPosition()).getDate());
-            tv_amount.setText(list.get(viewHolder.getAdapterPosition()).getTvAmount() + " "+
-                    v.getResources().getString(R.string.currency));
-            tv_comment.setText(list.get(viewHolder.getAdapterPosition()).getComment());
+                TextView tv_category = itemStatisticsDialog.findViewById(R.id.tv_category);
+                TextView tv_date_time = itemStatisticsDialog.findViewById(R.id.tv_date_time);
+                TextView tv_amount = itemStatisticsDialog.findViewById(R.id.tv_amount);
+                TextView tv_comment = itemStatisticsDialog.findViewById(R.id.tv_comment);
 
-            //CALL METHODS ON BUTTON CLICKS
-            onDeleteButtonClick(itemView, viewHolder);
-            onUpdateButtonClick(itemView, list, viewHolder);
+                tv_category.setText(item.getTvType());
+                tv_date_time.setText(item.getTime() + " " + item.getDate());
+                tv_amount.setText(item.getTvAmount() + " " + v.getResources().getString(R.string.currency));
+                tv_comment.setText(item.getComment());
+
+                //CALL METHODS ON BUTTON CLICKS
+                onDeleteButtonClick(itemView, viewHolder);
+                onUpdateButtonClick(itemView, list, viewHolder);
+            }
         });
 
         return viewHolder;
-
     }
 
     @SuppressLint("SetTextI18n")

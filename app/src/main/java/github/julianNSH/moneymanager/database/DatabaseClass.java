@@ -97,13 +97,13 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 OverviewModelClass temp = new OverviewModelClass();
-                temp.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
                 temp.setTvDomain("income");
-                temp.setTvType(c.getString(c.getColumnIndex(KEY_INCOME_SOURCE)));
-                temp.setTvAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
-                temp.setTime(c.getString(c.getColumnIndex(KEY_TIME)));
-                temp.setDate(c.getString(c.getColumnIndex(KEY_DATE)));
-                temp.setComment(c.getString(c.getColumnIndex(KEY_COMMENT)));
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_INCOME_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
                 overview.add(temp);
             } while (c.moveToNext());
         }
@@ -117,13 +117,13 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 OverviewModelClass temp = new OverviewModelClass();
-                temp.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
                 temp.setTvDomain("outgoing");
-                temp.setTvType(c.getString(c.getColumnIndex(KEY_OUTGOING_SOURCE)));
-                temp.setTvAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
-                temp.setTime(c.getString(c.getColumnIndex(KEY_TIME)));
-                temp.setDate(c.getString(c.getColumnIndex(KEY_DATE)));
-                temp.setComment(c.getString(c.getColumnIndex(KEY_COMMENT)));
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_OUTGOING_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
                 overview.add(temp);
             } while (c.moveToNext());
         }
@@ -136,17 +136,77 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 OverviewModelClass temp = new OverviewModelClass();
-                temp.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
                 temp.setTvDomain("other");
-                temp.setTvType(c.getString(c.getColumnIndex(KEY_SCOPE_SOURCE)));
-                temp.setTvAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
-                temp.setTime(c.getString(c.getColumnIndex(KEY_TIME)));
-                temp.setDate(c.getString(c.getColumnIndex(KEY_DATE)));
-                temp.setComment(c.getString(c.getColumnIndex(KEY_COMMENT)));
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_SCOPE_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
                 overview.add(temp);
             } while (c.moveToNext());
         }
         Log.e(LOG, queryOutgoing);
+
+        return overview;
+    }
+    public ArrayList<OverviewModelClass> getOverviewDataAll() {
+        ArrayList<OverviewModelClass> overview = new ArrayList<OverviewModelClass>();
+
+        String queryIncome = "SELECT * FROM " + TABLE_INCOME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(queryIncome, null);
+
+        if (c.moveToFirst()) {
+            do {
+                OverviewModelClass temp = new OverviewModelClass();
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+                temp.setTvDomain("income");
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_INCOME_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
+                overview.add(temp);
+            } while (c.moveToNext());
+        }
+
+        String queryOutgoing = "SELECT * FROM " + TABLE_OUTGOING;
+        c = db.rawQuery(queryOutgoing, null);
+
+        if (c.moveToFirst()) {
+            do {
+                OverviewModelClass temp = new OverviewModelClass();
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+                temp.setTvDomain("outgoing");
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_OUTGOING_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
+                overview.add(temp);
+            } while (c.moveToNext());
+        }
+
+        String queryScope = "SELECT * FROM " + TABLE_SCOPES;
+        c = db.rawQuery(queryScope, null);
+
+        if (c.moveToFirst()) {
+            do {
+                OverviewModelClass temp = new OverviewModelClass();
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+                temp.setTvDomain("other");
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_SCOPE_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
+                overview.add(temp);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
 
         return overview;
     }
@@ -223,9 +283,24 @@ public class DatabaseClass extends SQLiteOpenHelper{
         Log.e(LOG, query);
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
-        return cursor.getFloat(cursor.getColumnIndex(KEY_AMOUNT));
+        return cursor.getFloat(cursor.getColumnIndexOrThrow(KEY_AMOUNT));
 
 
+    }
+    public float getTotalIncomeAll() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT SUM(" + KEY_AMOUNT + ") AS " + KEY_AMOUNT + " FROM " + TABLE_INCOME;
+
+        Log.e(LOG, query);
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        float totalIncome = cursor.getFloat(cursor.getColumnIndexOrThrow(KEY_AMOUNT));
+
+        cursor.close();
+        db.close();
+
+        return totalIncome;
     }
     public ArrayList<String> getDistinctIncome(){
         ArrayList<String> titles = new ArrayList<>();
@@ -235,7 +310,7 @@ public class DatabaseClass extends SQLiteOpenHelper{
 
         if(c.moveToFirst()){
             do{
-                titles.add(c.getString(c.getColumnIndex(KEY_INCOME_SOURCE)));
+                titles.add(c.getString(c.getColumnIndexOrThrow(KEY_INCOME_SOURCE)));
             } while (c.moveToNext());
         }
         return titles;
@@ -272,7 +347,22 @@ public class DatabaseClass extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
-        return cursor.getFloat(cursor.getColumnIndex(KEY_AMOUNT));
+        return cursor.getFloat(cursor.getColumnIndexOrThrow(KEY_AMOUNT));
+    }
+
+    public float getTotalOutgoingAll() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT SUM(" + KEY_AMOUNT + ") AS " + KEY_AMOUNT + " FROM " + TABLE_OUTGOING;
+
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        float totalOutgoing = cursor.getFloat(cursor.getColumnIndexOrThrow(KEY_AMOUNT));
+
+        cursor.close();
+        db.close();
+
+        return totalOutgoing;
     }
 
     public StatisticsModelClass getOutgoingById(long outgoing_id){
@@ -284,14 +374,14 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c != null) c.moveToFirst();
 
         StatisticsModelClass outgoing = new StatisticsModelClass();
-        outgoing.setId(c.getInt(c.getColumnIndex(KEY_ID)));
-        outgoing.setIvIcon(c.getInt(c.getColumnIndex(KEY_OUTGOING_ICON)));
-        outgoing.setTvType(c.getString(c.getColumnIndex(KEY_OUTGOING_SOURCE)));
-        outgoing.setTvAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
-        outgoing.setTime(c.getString(c.getColumnIndex(KEY_TIME)));
-        outgoing.setDate(c.getString(c.getColumnIndex(KEY_DATE)));
-        outgoing.setComment(c.getString(c.getColumnIndex(KEY_COMMENT)));
-        outgoing.setRepeat(c.getInt(c.getColumnIndex(KEY_REPEAT)));
+        outgoing.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+        outgoing.setIvIcon(c.getInt(c.getColumnIndexOrThrow(KEY_OUTGOING_ICON)));
+        outgoing.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_OUTGOING_SOURCE)));
+        outgoing.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+        outgoing.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+        outgoing.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+        outgoing.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
+        outgoing.setRepeat(c.getInt(c.getColumnIndexOrThrow(KEY_REPEAT)));
 
         return outgoing;
     }
@@ -305,14 +395,14 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 StatisticsModelClass temp = new StatisticsModelClass();
-                temp.setId(c.getInt(c.getColumnIndex(KEY_ID)));
-                temp.setIvIcon(c.getInt(c.getColumnIndex(KEY_OUTGOING_ICON)));
-                temp.setTvType(c.getString(c.getColumnIndex(KEY_OUTGOING_SOURCE)));
-                temp.setTvAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
-                temp.setTime(c.getString(c.getColumnIndex(KEY_TIME)));
-                temp.setDate(c.getString(c.getColumnIndex(KEY_DATE)));
-                temp.setComment(c.getString(c.getColumnIndex(KEY_COMMENT)));
-                temp.setRepeat(c.getInt(c.getColumnIndex(KEY_REPEAT)));
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+                temp.setIvIcon(c.getInt(c.getColumnIndexOrThrow(KEY_OUTGOING_ICON)));
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_OUTGOING_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
+                temp.setRepeat(c.getInt(c.getColumnIndexOrThrow(KEY_REPEAT)));
                 outgoings.add(temp);
             } while (c.moveToNext());
         }
@@ -330,14 +420,14 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 StatisticsModelClass temp = new StatisticsModelClass();
-                temp.setId(c.getInt(c.getColumnIndex(KEY_ID)));
-                temp.setIvIcon(c.getInt(c.getColumnIndex(KEY_OUTGOING_ICON)));
-                temp.setTvType(c.getString(c.getColumnIndex(KEY_OUTGOING_SOURCE)));
-                temp.setTvAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
-                temp.setTime(c.getString(c.getColumnIndex(KEY_TIME)));
-                temp.setDate(c.getString(c.getColumnIndex(KEY_DATE)));
-                temp.setComment(c.getString(c.getColumnIndex(KEY_COMMENT)));
-                temp.setRepeat(c.getInt(c.getColumnIndex(KEY_REPEAT)));
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+                temp.setIvIcon(c.getInt(c.getColumnIndexOrThrow(KEY_OUTGOING_ICON)));
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_OUTGOING_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
+                temp.setRepeat(c.getInt(c.getColumnIndexOrThrow(KEY_REPEAT)));
                 outgoings.add(temp);
             } while (c.moveToNext());
         }
@@ -359,8 +449,8 @@ public class DatabaseClass extends SQLiteOpenHelper{
             if(c.moveToFirst()){
                 do{
                     StatisticsModelClass temp = new StatisticsModelClass();
-                    temp.setTvType(c.getString(c.getColumnIndex(KEY_OUTGOING_SOURCE)));
-                    temp.setTvAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
+                    temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_OUTGOING_SOURCE)));
+                    temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
                     result.add(temp);
                 } while (c.moveToNext());
             }
@@ -375,7 +465,7 @@ public class DatabaseClass extends SQLiteOpenHelper{
 
         if(c.moveToFirst()){
             do{
-                titles.add(c.getString(c.getColumnIndex(KEY_OUTGOING_SOURCE)));
+                titles.add(c.getString(c.getColumnIndexOrThrow(KEY_OUTGOING_SOURCE)));
             } while (c.moveToNext());
         }
         return titles;
@@ -388,7 +478,7 @@ public class DatabaseClass extends SQLiteOpenHelper{
 
         if(c.moveToFirst()){
             do{
-                titles.add(c.getString(c.getColumnIndex(KEY_OUTGOING_SOURCE)));
+                titles.add(c.getString(c.getColumnIndexOrThrow(KEY_OUTGOING_SOURCE)));
             } while (c.moveToNext());
         }
         return titles;
@@ -429,7 +519,7 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 SavingsModelClass temp = new SavingsModelClass();
-                temp.setDate(c.getString(c.getColumnIndex(KEY_DATE)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
             } while (c.moveToNext());
         }
         return dates;
@@ -462,7 +552,7 @@ public class DatabaseClass extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
         Log.e(LOG, query);
-        return cursor.getFloat(cursor.getColumnIndex(KEY_AMOUNT));
+        return cursor.getFloat(cursor.getColumnIndexOrThrow(KEY_AMOUNT));
     }
     //UPDATE TABLE
     //DELETE ELEMENT
@@ -500,16 +590,16 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 ScopeModelClass temp = new ScopeModelClass();
-                temp.setId(c.getInt(c.getColumnIndex(KEY_ID)));
-                temp.setTvTitle(c.getString(c.getColumnIndex(KEY_SCOPE_LIST_TITLE)));
-                temp.setTvInitialAmount(c.getFloat(c.getColumnIndex(KEY_CURRENT_AMOUNT)));
-                temp.setTvFinalAmount(c.getFloat(c.getColumnIndex(KEY_NEEDED_AMOUNT)));
-                temp.setStartTime(c.getString(c.getColumnIndex(KEY_START_TIME)));
-                temp.setStartDate(c.getString(c.getColumnIndex(KEY_START_DATE)));
-                temp.setEndTime(c.getString(c.getColumnIndex(KEY_END_TIME)));
-                temp.setEndDate(c.getString(c.getColumnIndex(KEY_END_DATE)));
-                temp.setComment(c.getString(c.getColumnIndex(KEY_COMMENT)));
-                temp.setIsCompleted(c.getInt(c.getColumnIndex(KEY_IS_COMPLETED)));
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+                temp.setTvTitle(c.getString(c.getColumnIndexOrThrow(KEY_SCOPE_LIST_TITLE)));
+                temp.setTvInitialAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_CURRENT_AMOUNT)));
+                temp.setTvFinalAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_NEEDED_AMOUNT)));
+                temp.setStartTime(c.getString(c.getColumnIndexOrThrow(KEY_START_TIME)));
+                temp.setStartDate(c.getString(c.getColumnIndexOrThrow(KEY_START_DATE)));
+                temp.setEndTime(c.getString(c.getColumnIndexOrThrow(KEY_END_TIME)));
+                temp.setEndDate(c.getString(c.getColumnIndexOrThrow(KEY_END_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
+                temp.setIsCompleted(c.getInt(c.getColumnIndexOrThrow(KEY_IS_COMPLETED)));
                 scopeList.add(temp);
             } while (c.moveToNext());
         }
@@ -524,8 +614,8 @@ public class DatabaseClass extends SQLiteOpenHelper{
 
         if(c.moveToFirst()){
             do{
-                titles.put(c.getInt(c.getColumnIndex(KEY_ID)),
-                        c.getString(c.getColumnIndex(KEY_SCOPE_LIST_TITLE)));
+                titles.put(c.getInt(c.getColumnIndexOrThrow(KEY_ID)),
+                        c.getString(c.getColumnIndexOrThrow(KEY_SCOPE_LIST_TITLE)));
             } while (c.moveToNext());
         }
         return titles;
@@ -558,12 +648,12 @@ public class DatabaseClass extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 StatisticsModelClass temp = new StatisticsModelClass();
-                temp.setId(c.getInt(c.getColumnIndex(KEY_ID)));
-                temp.setTvType(c.getString(c.getColumnIndex(KEY_SCOPE_SOURCE)));
-                temp.setTvAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
-                temp.setTime(c.getString(c.getColumnIndex(KEY_TIME)));
-                temp.setDate(c.getString(c.getColumnIndex(KEY_DATE)));
-                temp.setComment(c.getString(c.getColumnIndex(KEY_COMMENT)));
+                temp.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+                temp.setTvType(c.getString(c.getColumnIndexOrThrow(KEY_SCOPE_SOURCE)));
+                temp.setTvAmount(c.getFloat(c.getColumnIndexOrThrow(KEY_AMOUNT)));
+                temp.setTime(c.getString(c.getColumnIndexOrThrow(KEY_TIME)));
+                temp.setDate(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                temp.setComment(c.getString(c.getColumnIndexOrThrow(KEY_COMMENT)));
                 temp.setRepeat(0);
                 scopesVal.add(temp);
             } while (c.moveToNext());
@@ -585,20 +675,37 @@ public class DatabaseClass extends SQLiteOpenHelper{
      SAVINGS METHODS
      **********************************************************************************************/
     //SELECT DISTINCT strftime('%m/%Y', date) as "date" FROM outgoing UNION SELECT DISTINCT strftime('%m/%Y', date) as "date" FROM income ORDER BY date DESC
-    public ArrayList<String> getDistinctDates(){
-        String query = "SELECT DISTINCT strftime('%Y-%m', "+KEY_DATE+") as '"+KEY_DATE+"' FROM "+TABLE_OUTGOING+
-                " UNION SELECT DISTINCT strftime('%Y-%m', "+KEY_DATE+") as '"+KEY_DATE+"'  FROM "+TABLE_INCOME+"  ORDER BY date DESC";
+    public ArrayList<String> getDistinctDates() {
         ArrayList<String> queryResult = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.rawQuery(query, null);
 
-        if (c.moveToFirst()){
-            do{
-                queryResult.add(c.getString(c.getColumnIndex(KEY_DATE)));
-            }while (c.moveToNext());
+        // Sử dụng rawQuery để thực thi câu lệnh SQL và xem nếu có lỗi
+        try {
+            String query = "SELECT DISTINCT strftime('%Y-%m', " + KEY_DATE + ") as '" + KEY_DATE + "' FROM " + TABLE_OUTGOING +
+                    " UNION SELECT DISTINCT strftime('%Y-%m', " + KEY_DATE + ") as '" + KEY_DATE + "'  FROM " + TABLE_INCOME + "  ORDER BY " + KEY_DATE + " DESC";
+
+            Cursor c = db.rawQuery(query, null);
+
+            if (c.moveToFirst()) {
+                do {
+                    queryResult.add(c.getString(c.getColumnIndexOrThrow(KEY_DATE)));
+                } while (c.moveToNext());
+            } else {
+                Log.e("TAG", "No data found");
+            }
+
+            // Đóng con trỏ sau khi sử dụng
+            c.close();
+        } catch (Exception e) {
+            Log.e("TAG", "Error executing SQL query: " + e.getMessage());
+        } finally {
+            // Đóng cơ sở dữ liệu sau khi sử dụng
+            db.close();
         }
+
         return queryResult;
     }
+
 
     public float getIncomeByDate(String date){
         String query = "SELECT SUM("+KEY_AMOUNT+") AS "+ KEY_AMOUNT+" FROM "+TABLE_INCOME+" WHERE "+KEY_DATE+" LIKE '"+date+"%'";
@@ -606,7 +713,7 @@ public class DatabaseClass extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
         Log.e(LOG, query);
-        return cursor.getFloat(cursor.getColumnIndex(KEY_AMOUNT));
+        return cursor.getFloat(cursor.getColumnIndexOrThrow(KEY_AMOUNT));
     }
     public float getOutgoingByDate(String date){
         String query = "SELECT SUM("+KEY_AMOUNT+") AS "+ KEY_AMOUNT+" FROM "+TABLE_OUTGOING+" WHERE "+KEY_DATE+" LIKE '"+date+"%'";
@@ -614,7 +721,7 @@ public class DatabaseClass extends SQLiteOpenHelper{
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
         Log.e(LOG, query);
-        return cursor.getFloat(cursor.getColumnIndex(KEY_AMOUNT));
+        return cursor.getFloat(cursor.getColumnIndexOrThrow(KEY_AMOUNT));
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////

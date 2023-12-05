@@ -47,12 +47,11 @@ public class OverviewFragment extends Fragment {
     private DatabaseClass databaseClass;
     private TextView incomeOverview, outgoingOverview, inOutView;
     private DatePickerDialog datePicker;
-    private Button overviewDateButton, nextMonth, prevMonth;
     private Calendar date;
-    private int  currentMonth, currentYear;
+//    private int  currentMonth, currentYear;
 
     ///////////////////////////////////
-    private String[] sortParameters = {"Perioada Desc.", "Perioada Asc." , "Suma Desc.", "Suma Asc.","A-Z","Z-A"};
+    private String[] sortParameters = {"Mới nhất", "Cũ nhất" , "Số tiền giảm dần", "Số tiền tăng dần","A-Z","Z-A"};
     private String sortParamKey;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint({"SetTextI18n", "NonConstantResourceId", "DefaultLocale"})
@@ -64,56 +63,9 @@ public class OverviewFragment extends Fragment {
         //////////////DATE PICKER
         date = Calendar.getInstance();
 
-        currentMonth = date.get(Calendar.MONTH)+1;
-        currentYear = date.get(Calendar.YEAR);
 
-        sortParamKey = "Perioada Desc.";
-        showOverviewData(root, currentMonth, currentYear,sortParamKey); //on first run
-
-        overviewDateButton = root.findViewById(R.id.btn_date);
-        nextMonth = root.findViewById(R.id.btn_date_next);
-        prevMonth = root.findViewById(R.id.btn_date_prev);
-
-        //move to next month
-        nextMonth.setOnClickListener(v -> {
-            if (currentMonth==12){
-                currentMonth = 1;
-                currentYear++;
-            } else {currentMonth++;}
-            overviewDateButton.setText(CustomDateParser.customDateParser(String.format("%04d-%02d",currentYear,currentMonth)));
-            showOverviewData(root, currentMonth, currentYear,sortParamKey);
-        });
-        //move to previous month
-        prevMonth.setOnClickListener(v -> {
-            if (currentMonth==1){
-                currentMonth = 12;
-                currentYear--;
-            } else {currentMonth--;}
-            overviewDateButton.setText(CustomDateParser.customDateParser(String.format("%04d-%02d", currentYear, currentMonth)));
-            showOverviewData(root, currentMonth,currentYear,sortParamKey);
-        });
-
-        if(overviewDateButton.getText() =="")
-            overviewDateButton.setText(CustomDateParser.customDateParser(String.format("%04d-%02d", currentYear, currentMonth)));
-        overviewDateButton.setOnClickListener(v -> {
-            int day = date.get(Calendar.DAY_OF_MONTH);
-            int month = date.get(Calendar.MONTH);
-            int year = date.get(Calendar.YEAR);
-
-            datePicker = new DatePickerDialog(root.getContext(), android.R.style.Theme_Holo_Light_Dialog_NoActionBar, (view, year1, month1, dayOfMonth) -> {
-                currentMonth = month1 +1;
-                currentYear = year1;
-                overviewDateButton.setText(CustomDateParser.customDateParser(String.format("%04d-%02d", currentYear, currentMonth)));
-                showOverviewData(root, currentMonth, currentYear,sortParamKey);
-            }, year, month, day);
-
-            //android.R.style.Theme_Holo_Dialog,
-            datePicker.getDatePicker().setSpinnersShown(true);
-            datePicker.getDatePicker().setCalendarViewShown(false);
-
-            datePicker.show();
-
-        });
+        sortParamKey = "Mới nhất";
+        showOverviewData(root, sortParamKey); //on first run
 
         ////On sort spinner click
         Spinner spinner = root.findViewById(R.id.spinnerSort);
@@ -123,7 +75,7 @@ public class OverviewFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 sortParamKey = sortParameters[position];
-                showOverviewData(root,currentMonth,currentYear,sortParamKey);
+                showOverviewData(root,sortParamKey);
             }
 
             @Override
@@ -135,27 +87,23 @@ public class OverviewFragment extends Fragment {
     }
 
     @SuppressLint({"ResourceType", "SetTextI18n", "DefaultLocale"})
-    public void showOverviewData(View view, int month, int year, String sortParam){
-        String date = String.format("%04d-%02d", year, month);
+    public void showOverviewData(View view, String sortParam){
         databaseClass = new DatabaseClass(getContext());
-        overviewModelClasses = databaseClass.getOverviewData(date);
-        float totalIncome=databaseClass.getTotalIncome(date);
-        float totalOutgoing=databaseClass.getTotalOutgoing(date);
+        overviewModelClasses = databaseClass.getOverviewDataAll();
+        float totalIncome=databaseClass.getTotalIncomeAll();
+        float totalOutgoing=databaseClass.getTotalOutgoingAll();
         float inOutRatio;
 
-        TextView infoText = view.findViewById(R.id.infoText);
         LinearLayout linearLayoutChart = view.findViewById(R.id.barChartLayout);
         LinearLayout linearLayoutOverview = view.findViewById(R.id.overviewLayout);
         LinearLayout parentLayout = view.findViewById(R.id.parentLayout);
 
         if(overviewModelClasses.size()==0){
             parentLayout.setGravity(Gravity.CENTER_VERTICAL);
-            infoText.setVisibility(LinearLayout.VISIBLE);
             linearLayoutChart.setVisibility(LinearLayout.GONE);
             linearLayoutOverview.setVisibility(LinearLayout.GONE);
         } else {
             linearLayoutChart.setVisibility(LinearLayout.VISIBLE);
-            infoText.setVisibility(LinearLayout.GONE);
             linearLayoutOverview.setVisibility(LinearLayout.VISIBLE);
         }
 
@@ -190,16 +138,16 @@ public class OverviewFragment extends Fragment {
             }
             if (inOutRatio>100)inOutView.setText(">100%");
         }
-        
+
         ////RECICLERVIEW
         recyclerView = view.findViewById(R.id.rvTransaction);
 
         if(overviewModelClasses!=null) {
 
-            if(sortParam.equals("Perioada Asc.")) Collections.sort(overviewModelClasses, new SortMode((byte) 2));
-            if(sortParam.equals("Perioada Desc.")) Collections.sort(overviewModelClasses, new SortMode((byte)3));
-            if(sortParam.equals("Suma Asc.")) Collections.sort(overviewModelClasses, new SortMode((byte) 0));
-            if(sortParam.equals("Suma Desc.")) Collections.sort(overviewModelClasses, new SortMode((byte) 1));
+            if(sortParam.equals("Mới nhất")) Collections.sort(overviewModelClasses, new SortMode((byte) 2));
+            if(sortParam.equals("Cũ nhất")) Collections.sort(overviewModelClasses, new SortMode((byte)3));
+            if(sortParam.equals("Số tiền giảm dần")) Collections.sort(overviewModelClasses, new SortMode((byte) 0));
+            if(sortParam.equals("Số tiền tăng dần")) Collections.sort(overviewModelClasses, new SortMode((byte) 1));
             if(sortParam.equals("A-Z")) Collections.sort(overviewModelClasses, new SortMode((byte)4));
             if(sortParam.equals("Z-A")) Collections.sort(overviewModelClasses, new SortMode((byte)5));
 
@@ -229,7 +177,7 @@ public class OverviewFragment extends Fragment {
 
         /////CHART
         chart = view.findViewById(R.id.fragment_groupedbarchart_chart);
-        BarData data = createChartData(month, year);
+        BarData data = createChartData();
         configureChartAppearance();
         prepareChartData(data);
     }
@@ -259,26 +207,13 @@ public class OverviewFragment extends Fragment {
         chart.setDrawGridBackground(true);
     }
 
-    @SuppressLint("DefaultLocale")
-    BarData createChartData(int month, int year) {
+    BarData createChartData() {
         ArrayList<BarEntry> values1 = new ArrayList<>();
         ArrayList<BarEntry> values2 = new ArrayList<>();
-        int dYear, dMonth;
 
+        values1.add(new BarEntry(0, databaseClass.getTotalIncomeAll()));
+        values2.add(new BarEntry(0, databaseClass.getTotalOutgoingAll()));
 
-        date = Calendar.getInstance();
-        for (int i = 0; i < MAX_X_VALUE; i++) {
-            dYear=year; dMonth=month;
-            if(month==3){ if (i==0){ dYear--; dMonth = 15; } }
-            if(month==2){ if (i<=1){ dYear--; dMonth = 14;} }
-            if(month==1){ if (i<=2){ dYear--; dMonth = 13; } }
-            if(month==12){ if (i>=4){ dYear++; dMonth = 0; } }
-            if(month==11){ if (i>=5){ dYear++; dMonth = -1;} }
-            if(month==10){ if (i==6){ dYear++; dMonth = -2; } }
-
-            values1.add(new BarEntry(i, databaseClass.getTotalIncome(String.format("%04d-%02d", dYear, dMonth+i-3))));
-            values2.add(new BarEntry(i, databaseClass.getTotalOutgoing(String.format("%04d-%02d", dYear, dMonth+i-3))));
-        }
         GROUP_1_LABEL = getResources().getString(R.string.income);
         GROUP_2_LABEL = getResources().getString(R.string.outgoings);
         BarDataSet set1 = new BarDataSet(values1, GROUP_1_LABEL);
@@ -294,9 +229,8 @@ public class OverviewFragment extends Fragment {
         data.setValueFormatter(new LargeValueFormatter());
 
         ArrayList<String> months = new ArrayList<>();
-        for (int i=1; i<=MAX_X_VALUE; i++){
-            months.add(CustomDateParser.customDateParser(String.format("%04d-%02d-00",year,month+i-3),"MMM"));
-        }
+        months.add(""); // Chỉ để có một giá trị trên trục x
+
         XAxis xAxis = chart.getXAxis();
         xAxis.setValueFormatter(new MyAxysValueFormatter(months));
         return data;

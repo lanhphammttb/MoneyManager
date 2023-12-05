@@ -132,9 +132,15 @@ public class SavingsFragment extends Fragment {
         xAxis.setValueFormatter(new IndexAxisValueFormatter(){
             @Override
             public String getFormattedValue(float value) {
-                return months.get(((int) value));
+                int index = (int) value;
+                if (index >= 0 && index < months.size()) {
+                    return months.get(index);
+                } else {
+                    return ""; // Hoặc một giá trị mặc định khác tùy thuộc vào yêu cầu của bạn
+                }
             }
         });
+
 
         xAxis.setGranularity(1);
         xAxis.setLabelCount(months.size());

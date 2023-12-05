@@ -1,14 +1,39 @@
 <resources>
     <string name="app_name">MoneyManager</string>
-    <string name="title_overview">Sinopsis</string>
+    <string name="title_overview">Tổng quan</string>
     <string name="title_statistics">Statistica</string>
     <string name="title_scope">Scopuri</string>
     <string name="title_savings">Economii</string>
     <string name="title_add">Adaugare</string>
 
-    <string name="currency"> MDL</string>
-    <string name="income">Venit</string>
-    <string name="outgoings">Cheltuieli</string>
-    <string name="from">De La:</string>
+    <string name="currency"> VNĐ</string>
+    <string name="income">Thu nhập</string>
+    <string name="outgoings">Chi tiêu</string>
+    <string name="from">Từ:</string>
+    <string name="to">Đến:</string>
     <string name="until">Până la</string>
+    <string name="group">Nhóm</string>
+    <string name="selector">Chọn hoặc tạo mới</string>
+    <string name="money">Số tiền</string>
+    <string name="text_money">Nhập số tiền</string>
+    <string name="date">Ngày và giờ</string>
+    <string name="des">Mô tả</string>
+    <string name="add">Thêm</string>
+    <string name="save">Lưu</string>
+    <string name="list_trans">Danh sách giao dịch</string>
+    <string name="sort">Sắp xếp:</string>
+    <string name="cmt">Ghi chú</string>
+    <string name="edit">Sửa</string>
+    <string name="del">Xóa</string>
+    <string name="scop">Mục đích</string>
+    <string name="money_nes">Số tiền cần thiết</string>
+    <string name="money_cur">Số tiền hiện tại</string>
+    <string name="money_get">Số tiền thu được</string>
+    <string name="create_scop">Tạo mục tiêu</string>
+    <string name="text_scop">Nhập mục tiêu</string>
+    <string name="total">Tổng số dư</string>
+    <string name="viewall">Xem tất cả</string>
+    <string name="view_all">Xem tất cả</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
